@@ -1,11 +1,13 @@
 package edu.hei.school.ingredients.service;
 
 import edu.hei.school.ingredients.entity.Ingredient;
+import edu.hei.school.ingredients.entity.StockValue;
+import edu.hei.school.ingredients.entity.Unit;
 import edu.hei.school.ingredients.exception.NotFoundException;
 import edu.hei.school.ingredients.repository.IngredientRepository;
 import org.springframework.stereotype.Service;
 
-import java.sql.Connection;
+import java.time.Instant;
 import java.util.List;
 import java.util.Optional;
 
@@ -27,5 +29,10 @@ public class IngredientService {
             throw new NotFoundException("Ingredient.id="+id+" is not found");
         }
         return optionalIngredient.get();
+    }
+
+    public StockValue getStockValueAt(Integer ingredientId, Instant temporal, Unit unit) {
+        Ingredient ingredient = getById(ingredientId);
+        return ingredient.getStockValueAt(temporal, unit);
     }
 }

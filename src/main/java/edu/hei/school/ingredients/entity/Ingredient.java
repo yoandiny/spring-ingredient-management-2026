@@ -78,7 +78,7 @@ public class Ingredient {
         this.stockMovementList = stockMovementList;
     }
 
-    public StockValue getStockValueAt(Instant t) {
+    public StockValue getStockValueAt(Instant t, Unit unit) {
         if (stockMovementList == null) return null;
         Map<Unit, List<StockMovement>> unitSet = stockMovementList.stream()
                 .collect(Collectors.groupingBy(stockMovement -> stockMovement.getValue().getUnit()));

@@ -3,6 +3,7 @@ package edu.hei.school.ingredients.repository;
 import edu.hei.school.ingredients.config.DataSource;
 import edu.hei.school.ingredients.entity.CategoryEnum;
 import edu.hei.school.ingredients.entity.Ingredient;
+import edu.hei.school.ingredients.entity.StockMovement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -18,9 +19,11 @@ import java.util.Optional;
 @Repository
 public class IngredientRepository {
     Connection connection;
+    StockMovementRepository stockMovementRepository;
 
-    public IngredientRepository(Connection connection) {
+    public IngredientRepository(Connection connection, StockMovementRepository stockMovementRepository) {
         this.connection = connection;
+        this.stockMovementRepository = stockMovementRepository;
     }
 
     public Optional<Ingredient> findById(Integer id) {
@@ -37,6 +40,7 @@ public class IngredientRepository {
                 ingredient.setName(resultSet.getString("name"));
                 ingredient.setCategory(CategoryEnum.valueOf(resultSet.getString("category")));
                 ingredient.setPrice(resultSet.getDouble("price"));
+                ingredient.setStockMovementList(stockMovementRepository.findAllByIngredientId(id));
                 return Optional.of(ingredient);
             }
             return Optional.empty();
