@@ -1,14 +1,16 @@
 package edu.hei.school.ingredients.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.AccessLevel;
+import lombok.Getter;
+
 import java.time.Instant;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.DoubleStream;
-
-import static java.time.Instant.now;
 
 public class Ingredient {
     private Integer id;
@@ -67,6 +69,7 @@ public class Ingredient {
         return Objects.equals(id, that.id) && Objects.equals(name, that.name) && category == that.category && Objects.equals(price, that.price);
     }
 
+    @JsonIgnore
     public List<StockMovement> getStockMovementList() {
         return stockMovementList;
     }
@@ -105,16 +108,5 @@ public class Ingredient {
     @Override
     public int hashCode() {
         return Objects.hash(id, name, category, price);
-    }
-
-    @Override
-    public String toString() {
-        return "Ingredient{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", category=" + category +
-                ", price=" + price +
-                ", actualStock=" + getStockValueAt(now()) +
-                '}';
     }
 }
