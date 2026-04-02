@@ -30,7 +30,7 @@ public class DishIngredient {
         this.unit = unit;
     }
 
-    
+
     public Dish getDish() {
         return dish;
     }

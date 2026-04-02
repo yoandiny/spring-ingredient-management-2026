@@ -69,7 +69,6 @@ public class Dish {
         this.name = name;
     }
 
-    @JsonIgnore
     public DishTypeEnum getDishType() {
         return dishType;
     }
@@ -90,7 +89,6 @@ public class Dish {
         return Objects.hash(id, name, dishType, dishIngredients);
     }
 
-    @JsonIgnore
     public Double getGrossMargin() {
         if (price == null) {
             throw new RuntimeException("Price is null");
