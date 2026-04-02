@@ -19,14 +19,14 @@ public class IngredientService {
         this.ingredientRepository = ingredientRepository;
     }
 
-    public List<Ingredient> findAll(){
+    public List<Ingredient> findAll() {
         return ingredientRepository.findAll();
     }
 
     public Ingredient getById(Integer id) {
         Optional<Ingredient> optionalIngredient = ingredientRepository.findById(id);
         if (optionalIngredient.isEmpty()) {
-            throw new NotFoundException("Ingredient.id="+id+" is not found");
+            throw new NotFoundException("Ingredient.id=" + id + " is not found");
         }
         return optionalIngredient.get();
     }

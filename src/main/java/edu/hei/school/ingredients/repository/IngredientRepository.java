@@ -1,13 +1,9 @@
 package edu.hei.school.ingredients.repository;
 
-import edu.hei.school.ingredients.config.DataSource;
 import edu.hei.school.ingredients.entity.CategoryEnum;
 import edu.hei.school.ingredients.entity.Ingredient;
-import edu.hei.school.ingredients.entity.StockMovement;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import javax.swing.text.html.Option;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

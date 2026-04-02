@@ -13,7 +13,7 @@ import java.util.List;
 @Repository
 public class DishRepository {
     Connection connection;
-    
+
     public DishRepository(Connection connection) {
         this.connection = connection;
     }

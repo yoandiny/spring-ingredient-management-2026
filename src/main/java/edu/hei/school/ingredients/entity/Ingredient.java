@@ -2,8 +2,6 @@ package edu.hei.school.ingredients.entity;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.AccessLevel;
-import lombok.Getter;
 
 import java.time.Instant;
 import java.util.List;
